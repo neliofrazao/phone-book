@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';;
 
-class PersonList extends Component {
+class PhoneBook extends Component {
   constructor(props){
     super(props)
     this.state = { listPersonGrid : [] }
@@ -74,4 +74,4 @@ class PersonList extends Component {
   }
 }
 
-export default PersonList
+export default PhoneBook
