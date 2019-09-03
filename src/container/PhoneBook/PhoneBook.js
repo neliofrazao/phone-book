@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button, Paper } from '@material-ui/core'
 import { axios } from '../../util'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
@@ -21,6 +20,10 @@ class PhoneBook extends Component {
     this.props.history.push(`phone-detail/${phoneId}`)
   }
 
+  handleDeletePhone = phoneId => {
+    axios.delete(`phoneList/${phoneId}`)
+  }
+
   componentDidMount() {
     this.getPerson()
   }
@@ -32,6 +35,7 @@ class PhoneBook extends Component {
          <PhoneList 
           phones={this.state.phoneList}
           handlePhoneDetail={this.handlePhoneDetail}
+          handleDeletePhone={this.handleDeletePhone}
         />
       </MainTemplate>
     )

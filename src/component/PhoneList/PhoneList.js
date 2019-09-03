@@ -9,8 +9,9 @@ import {
 } from '@material-ui/icons'
 import './PhoneList.styles.css'
 
-const PhoneList = ({ handlePhoneDetail, phones }) => {
+const PhoneList = ({ handleDeletePhone, handlePhoneDetail, phones }) => {
   const handleDetailClick = phoneId => e => handlePhoneDetail(phoneId, e)
+  const handleDeleteClick = phoneId => e => handleDeletePhone(phoneId, e)
 
   return(
     <Grid container justify="center" spacing={3}>
@@ -29,7 +30,9 @@ const PhoneList = ({ handlePhoneDetail, phones }) => {
               <Button size="small" onClick={handleDetailClick(phone.id)}>
                 <KeyboardArrowRightRounded /> Detalhes
               </Button>
-              <Button size="small"><DeleteRounded /> Apagar</Button>
+              <Button size="small" onClick={handleDeleteClick(phone.id)}>
+                <DeleteRounded /> Apagar
+              </Button>
             </CardActions>
           </Card>
         </Grid>
