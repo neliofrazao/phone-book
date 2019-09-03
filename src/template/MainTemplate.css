@@ -1,0 +1,17 @@
+
+.main-template {
+  width: '100%';
+  background: '#eee';
+  position: 'relative';
+  overflow: 'hidden';
+  flex-wrap: 'nowrap';
+  min-height: '100vh';
+  z-index: 1;
+  border-top: '10px solid #000';
+  display: 'flex';
+  flex-direction: 'column';
+}
+
+.content {
+  margin: '10px'
+}
