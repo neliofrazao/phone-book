@@ -3,16 +3,20 @@ import { axios } from '../../util'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import PhoneList from '../../component/PhoneList'
+import Loading from '../../shared/Loading'
 
 class PhoneBook extends Component {
   constructor(props){
     super(props)
-    this.state = { phoneList : [] }
+    this.state = {
+      isLoading: true,
+      phoneList : [],
+    }
   }
 
   getPerson = () => {
     axios.get('phoneList').then(({ data }) => {
-      this.setState({ phoneList: data })
+      this.setState({ isLoading: false, phoneList: data })
     })
   }
 
@@ -32,11 +36,15 @@ class PhoneBook extends Component {
     return(
       <MainTemplate>
         <AppHeader title="Página de listagem" />
-         <PhoneList 
-          phones={this.state.phoneList}
-          handlePhoneDetail={this.handlePhoneDetail}
-          handleDeletePhone={this.handleDeletePhone}
-        />
+        {this.state.isLoading ? (
+          <Loading />
+        ) : (
+          <PhoneList
+            phones={this.state.phoneList}
+            handlePhoneDetail={this.handlePhoneDetail}
+            handleDeletePhone={this.handleDeletePhone}
+          />
+        )}
       </MainTemplate>
     )
   }
