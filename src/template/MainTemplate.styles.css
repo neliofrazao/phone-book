@@ -1,0 +1,13 @@
+
+.main-template {
+  width: 100%;
+  background: #eee;
+  position: relative;
+  padding: 0 1.5em;
+  box-sizing: border-box;
+  min-height: 100vh;
+  z-index: 1;
+  border-top: 5px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}

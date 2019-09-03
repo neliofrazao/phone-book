@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
-import  './MainTemplate.css';
+import  './MainTemplate.styles.css';
 
 const MainTemplate = ({ children }) => {
   return (
