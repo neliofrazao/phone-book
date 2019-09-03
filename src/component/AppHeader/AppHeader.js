@@ -1,10 +1,10 @@
 import React from 'react'
 import { Grid, Typography } from '@material-ui/core'
 import { Helmet } from 'react-helmet'
+import  './AppHeader.styles.css';
 
 const AppHeader = ({ title }) => (
-  <header>
-
+  <header className="header">
     <Helmet>
       <title>{title}</title>
     </Helmet>
