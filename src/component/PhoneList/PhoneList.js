@@ -9,25 +9,33 @@ import {
 } from '@material-ui/icons'
 import './PhoneList.styles.css'
 
-const PhoneList = () => (
-  <Grid container justify="center" spacing={3}>
-     <Grid item sm={12} md={6} lg={3}>
-      <Card>
-        <CardContent>
-          <Typography variant="h5" component="h2" className="card-name">
-            <PersonPinCircle /> Zezin
-          </Typography>
-          <Typography color="textSecondary">
-            <PhoneAndroidRounded /> 9999-8888
-          </Typography>
-        </CardContent>
-        <CardActions className="card-actions">
-          <Button size="small"><KeyboardArrowRightRounded /> Detalhes</Button>
-          <Button size="small"><DeleteRounded /> Apagar</Button>
-        </CardActions>
-      </Card>
+const PhoneList = ({ handlePhoneDetail, phones }) => {
+  const handleDetailClick = phoneId => e => handlePhoneDetail(phoneId, e)
+
+  return(
+    <Grid container justify="center" spacing={3}>
+      {phones.map(phone =>
+        <Grid item sm={12} md={6} lg={3} key={phone.id}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5" component="h2" className="card-name">
+                <PersonPinCircle /> {phone.nickName}
+              </Typography>
+              <Typography color="textSecondary">
+                <PhoneAndroidRounded /> {phone.phoneNumer}
+              </Typography>
+            </CardContent>
+            <CardActions className="card-actions">
+              <Button size="small" onClick={handleDetailClick(phone.id)}>
+                <KeyboardArrowRightRounded /> Detalhes
+              </Button>
+              <Button size="small"><DeleteRounded /> Apagar</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+      )}
     </Grid>
-  </Grid>
-)
+  )
+}
 
 export default PhoneList

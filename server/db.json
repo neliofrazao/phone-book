@@ -2,14 +2,14 @@
   "phoneList": [
     {
       "name": "José Nunes da Silva",
-      "phone": "9999-8888",
+      "phoneNumer": "9999-8888",
       "email": "zezin@gmail.com",
       "nickName": "Zezin",
       "id": 1
     },
     {
       "name": "Joao Silva Fopxs",
-      "phone": "9999-7788",
+      "phoneNumer": "9999-7788",
       "email": "fopxs@gmail.com",
       "nickName": "Fopxs",
       "id": 2

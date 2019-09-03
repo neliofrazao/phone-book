@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Paper, Button } from '@material-ui/core'
+import { Button, Paper } from '@material-ui/core'
 import { axios } from '../../util'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
@@ -8,17 +8,17 @@ import PhoneList from '../../component/PhoneList'
 class PhoneBook extends Component {
   constructor(props){
     super(props)
-    this.state = { listPersonGrid : [] }
+    this.state = { phoneList : [] }
   }
 
   getPerson = () => {
     axios.get('phoneList').then(({ data }) => {
-      this.setState({ listPersonGrid: data })
+      this.setState({ phoneList: data })
     })
   }
 
-  handlePersonDetail = personId => {
-    this.props.history.push(`person-detail/${personId}`)
+  handlePhoneDetail = phoneId => {
+    this.props.history.push(`phone-detail/${phoneId}`)
   }
 
   componentDidMount() {
@@ -29,21 +29,10 @@ class PhoneBook extends Component {
     return(
       <MainTemplate>
         <AppHeader title="Página de listagem" />
-         <PhoneList />
-         <Paper>
-          <ul>
-              {this.state.listPersonGrid.map(person =>
-                <li key={person.id}>
-                  Nome: {person.nome} - 
-                  Telefone: {person.telefone} - 
-                  Apelido: {person.apelido}
-                  <Button onClick={() => this.handlePersonDetail(person.id)} variant="contained" >
-                    Default
-                  </Button>
-                </li>
-              )}
-          </ul>
-         </Paper>
+         <PhoneList 
+          phones={this.state.phoneList}
+          handlePhoneDetail={this.handlePhoneDetail}
+        />
       </MainTemplate>
     )
   }
