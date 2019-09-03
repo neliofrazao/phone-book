@@ -14,7 +14,10 @@
     "react-scripts": "3.1.1"
   },
   "scripts": {
+    "server": "react-scripts start & apiserver",
     "start": "react-scripts start",
+    "start:server": "npm run apiserver | npm start",
+    "apiserver": "json-server --watch --port 4000 server/db.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -33,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-server": "^0.15.1"
   }
 }
