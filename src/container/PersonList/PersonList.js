@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Paper, Button } from '@material-ui/core'
+import { axios } from '../../util'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
-import getPerson from '../../api/person'
 
 class PersonList extends Component {
   constructor(props){
@@ -17,9 +17,8 @@ class PersonList extends Component {
   }
   
   person = () => {
-    getPerson().then( list => {
-      console.log(list.name, 'lista')
-      this.setState({ listPersonGrid: list })
+    axios.get('phoneList').then( list => {
+      this.setState({ listPersonGrid: list.data })
     })
   }
 
@@ -32,13 +31,11 @@ class PersonList extends Component {
   }
 
   render() {
-    const { history } = this.props
     return(
       <MainTemplate>
         <AppHeader title="Página de listagem" />
          <Paper>
-           {/* {console.log(this.state.listPersonGrid)} */}
-            {/* <ul>
+            <ul>
                 {this.state.listPersonGrid.map(person =>
                   <li key={person.id}>
                     Nome: {person.nome} - 
@@ -49,7 +46,7 @@ class PersonList extends Component {
                     </Button>
                   </li>
                 )}
-            </ul> */}
+            </ul>
          </Paper>
       </MainTemplate>
     )
