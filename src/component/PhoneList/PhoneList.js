@@ -10,8 +10,8 @@ import {
 import './PhoneList.styles.css'
 
 const PhoneList = ({ handleDeletePhone, handlePhoneDetail, phones }) => {
-  const handleDetailClick = phoneId => e => handlePhoneDetail(phoneId, e)
-  const handleDeleteClick = phoneId => e => handleDeletePhone(phoneId, e)
+  const handleDetailClick = phoneId => () => handlePhoneDetail(phoneId)
+  const handleDeleteClick = phoneId => () => handleDeletePhone(phoneId)
 
   return(
     <Grid container justify="center" spacing={3}>

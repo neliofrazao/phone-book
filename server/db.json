@@ -13,6 +13,20 @@
       "email": "fopxs@gmail.com",
       "nickName": "Fopxs",
       "id": 2
+    },
+    {
+      "name": "Ana Júlia Lopes",
+      "phoneNumer": "9999-9613",
+      "email": "Anaju@gmail.com",
+      "nickName": "Anaju",
+      "id": 3
+    },
+    {
+      "name": "Mauro Luiz",
+      "phoneNumer": "9999-2014",
+      "email": "Maurin@gmail.com",
+      "nickName": "Maurin",
+      "id": 4
     }
   ]
 }
