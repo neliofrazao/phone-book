@@ -4,6 +4,7 @@ import { Avatar, Button, Grid, Paper, Typography } from '@material-ui/core'
 import {  PersonPinCircle, PhoneAndroidRounded } from '@material-ui/icons'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
+import PhoneContentItens from '../../component/PhoneContentItens'
 import Loading from '../../shared/Loading'
 import './PhoneDetail.styles.css'
 
