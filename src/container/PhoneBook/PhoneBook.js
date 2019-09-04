@@ -15,7 +15,7 @@ class PhoneBook extends Component {
     }
   }
 
-  getPerson = () => {
+  getPhoneBooklist = () => {
     axios.get('phoneList').then(({ data }) => {
       this.setState({ isLoading: false, phoneList: data })
     })
@@ -31,11 +31,11 @@ class PhoneBook extends Component {
 
   handleDeletePhone = phoneId => {
     this.setState({ isLoading:true })
-    axios.delete(`phoneList/${phoneId}`).then(() => this.getPerson())
+    axios.delete(`phoneList/${phoneId}`).then(() => this.getPhoneBooklist())
   }
 
   componentDidMount() {
-    this.getPerson()
+    this.getPhoneBooklist()
   }
 
   render() {
