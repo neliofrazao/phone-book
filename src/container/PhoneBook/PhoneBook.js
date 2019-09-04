@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { axios } from '../../util'
+import { Button } from '@material-ui/core'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import PhoneList from '../../component/PhoneList'
@@ -24,8 +25,13 @@ class PhoneBook extends Component {
     this.props.history.push(`phone-detail/${phoneId}`)
   }
 
+  handleNewContact = () => {
+    this.props.history.push(`new-contact`)
+  }
+
   handleDeletePhone = phoneId => {
-    axios.delete(`phoneList/${phoneId}`)
+    this.setState({ isLoading:true })
+    axios.delete(`phoneList/${phoneId}`).then(() => this.getPerson())
   }
 
   componentDidMount() {
@@ -35,7 +41,16 @@ class PhoneBook extends Component {
   render() {
     return(
       <MainTemplate>
-        <AppHeader title="Página de listagem" />
+        <AppHeader title="Agenda Telefônica" >
+          <Button 
+            variant="contained" 
+            color="primary" 
+            size="small"
+            onClick={this.handleNewContact}
+          >
+            Novo Contato
+          </Button>
+        </AppHeader>
         {this.state.isLoading ? (
           <Loading />
         ) : (
