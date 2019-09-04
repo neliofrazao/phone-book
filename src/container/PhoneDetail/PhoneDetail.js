@@ -32,8 +32,8 @@ class PhoneDetail extends Component {
     const nameIcon = <PersonPinCircle />
     const emailIcon = <EmailRounded />
     const phoneNumerIcon = <PhoneAndroidRounded />
+    const { name, nickName, email, phoneNumer } = this.state.phoneDetail
     
-    const { name, nickName, email, phoneNumer } =this.state.phoneDetail
     return(
       <MainTemplate>
         {this.state.isLoading ? (
@@ -51,9 +51,9 @@ class PhoneDetail extends Component {
               </Button>
             </AppHeader>
             <Paper className="phone-detail">
-              <PhoneContentItens icon={nameIcon} phoneInfoContent={`${name} (${nickName})`}/>
-              <PhoneContentItens icon={emailIcon} phoneInfoContent={email} />
-              <PhoneContentItens icon={phoneNumerIcon} phoneInfoContent={phoneNumer} />
+              <PhoneContentItens icon={nameIcon} phoneContentText={`${name} (${nickName})`}/>
+              <PhoneContentItens icon={emailIcon} phoneContentText={email} />
+              <PhoneContentItens icon={phoneNumerIcon} phoneContentText={phoneNumer} />
             </Paper>
           </>
         )}
