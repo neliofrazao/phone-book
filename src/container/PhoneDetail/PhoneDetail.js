@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { axios } from '../../util'
-import { Avatar, Button, Grid, Paper, Typography } from '@material-ui/core'
-import {  PersonPinCircle, PhoneAndroidRounded } from '@material-ui/icons'
+import {  Button, Paper } from '@material-ui/core'
+import { EmailRounded, PersonPinCircle, PhoneAndroidRounded } from '@material-ui/icons'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import PhoneContentItens from '../../component/PhoneContentItens'
@@ -20,7 +20,6 @@ class PhoneDetail extends Component {
   getPhoneDetail = () => {
     const phoneId = this.props.match.params.phoneId
     axios.get(`phoneList/${phoneId}`).then(({ data }) => {
-      console.log(data)
       this.setState({ isLoading: false, phoneDetail: data })
     })
   }
@@ -30,13 +29,18 @@ class PhoneDetail extends Component {
   }
 
   render() {
+    const nameIcon = <PersonPinCircle />
+    const emailIcon = <EmailRounded />
+    const phoneNumerIcon = <PhoneAndroidRounded />
+    
+    const { name, nickName, email, phoneNumer } =this.state.phoneDetail
     return(
       <MainTemplate>
         {this.state.isLoading ? (
           <Loading />
         ) : (
           <>
-            <AppHeader title={`${this.state.phoneDetail.name}`} >
+            <AppHeader title={name} >
               <Button 
                 variant="contained" 
                 color="primary" 
@@ -47,21 +51,9 @@ class PhoneDetail extends Component {
               </Button>
             </AppHeader>
             <Paper className="phone-detail">
-              <Grid item xs={12} className="phone-detail-content">
-                <Avatar className="phone-detail-avatar">
-                  <PersonPinCircle />
-                </Avatar>
-                <Typography variant="body1" gutterBottom>
-                  {this.state.phoneDetail.name} ({this.state.phoneDetail.nickName})
-                </Typography>
-              </Grid>
-
-              <Typography variant="body1" gutterBottom>
-                {this.state.phoneDetail.email}
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                {this.state.phoneDetail.phoneNumer}
-              </Typography>
+              <PhoneContentItens icon={nameIcon} phoneInfoContent={`${name} (${nickName})`}/>
+              <PhoneContentItens icon={emailIcon} phoneInfoContent={email} />
+              <PhoneContentItens icon={phoneNumerIcon} phoneInfoContent={phoneNumer} />
             </Paper>
           </>
         )}
