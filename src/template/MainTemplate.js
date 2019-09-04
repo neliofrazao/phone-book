@@ -6,7 +6,7 @@ const MainTemplate = ({ children }) => {
   return (
     <main className="main-template">
       <Grid container justify="center" spacing={3}>
-        <Grid item xs={12} className="content">
+        <Grid item xs={8} className="content">
           {children}
         </Grid>
       </Grid>
