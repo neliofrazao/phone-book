@@ -5,22 +5,22 @@ import { EmailRounded, PersonPinCircle, PhoneAndroidRounded } from '@material-ui
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import PhoneContentItens from '../../component/PhoneContentItens'
-import Loading from '../../shared/Loading'
-import './PhoneDetail.styles.css'
+import Loading from '../../component/Loading'
+import './ContactDetail.styles.css'
 
-class PhoneDetail extends Component {
+class ContactDetail extends Component {
   constructor(props){
     super(props)
     this.state = {
       isLoading: true,
-      phoneDetail : [],
+      contactDetail : [],
     }
   }
 
-  getPhoneDetail = () => {
-    const phoneId = this.props.match.params.phoneId
-    axios.get(`phoneList/${phoneId}`).then(({ data }) => {
-      this.setState({ isLoading: false, phoneDetail: data })
+  getContactDetail = () => {
+    const contactId = this.props.match.params.contactId
+    axios.get(`phoneList/${contactId}`).then(({ data }) => {
+      this.setState({ isLoading: false, contactDetail: data })
     })
   }
 
@@ -33,14 +33,14 @@ class PhoneDetail extends Component {
   }
 
   componentDidMount() {
-    this.getPhoneDetail()
+    this.getContactDetail()
   }
 
   render() {
     const nameIcon = <PersonPinCircle />
     const emailIcon = <EmailRounded />
     const phoneNumerIcon = <PhoneAndroidRounded />
-    const { name, nickName, email, phoneNumer } = this.state.phoneDetail
+    const { name, nickName, email, phoneNumer } = this.state.contactDetail
     
     return(
       <MainTemplate>
@@ -53,7 +53,7 @@ class PhoneDetail extends Component {
                 Editar
               </Button>
             </AppHeader>
-            <Paper className="phone-detail">
+            <Paper className="contact-detail">
               <PhoneContentItens icon={nameIcon} phoneContentText={`${name} (${nickName})`}/>
               <PhoneContentItens icon={emailIcon} phoneContentText={email} />
               <PhoneContentItens icon={phoneNumerIcon} phoneContentText={phoneNumer} />
@@ -70,4 +70,4 @@ class PhoneDetail extends Component {
   }
 }
 
-export default PhoneDetail
+export default ContactDetail

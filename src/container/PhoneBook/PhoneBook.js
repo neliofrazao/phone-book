@@ -21,17 +21,17 @@ class PhoneBook extends Component {
     })
   }
 
-  handlePhoneDetail = phoneId => {
-    this.props.history.push(`phone-detail/${phoneId}`)
+  handlePhoneDetail = contactId => {
+    this.props.history.push(`contact-detail/${contactId}`)
   }
 
   handleNewContact = () => {
     this.props.history.push(`new-contact`)
   }
 
-  handleDeletePhone = phoneId => {
+  handleDeletePhone = contactId => {
     this.setState({ isLoading:true })
-    axios.delete(`phoneList/${phoneId}`).then(() => this.getPhoneBooklist())
+    axios.delete(`phoneList/${contactId}`).then(() => this.getPhoneBooklist())
   }
 
   componentDidMount() {
