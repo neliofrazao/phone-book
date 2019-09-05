@@ -24,6 +24,14 @@ class PhoneDetail extends Component {
     })
   }
 
+  handleNewContact = () => {
+    this.props.history.push('edit-contact')
+  }
+
+  handleHistoryBack = () => {
+    this.props.history.push('/')
+  }
+
   componentDidMount() {
     this.getPhoneDetail()
   }
@@ -41,19 +49,19 @@ class PhoneDetail extends Component {
         ) : (
           <>
             <AppHeader title={name} >
-              <Button 
-                variant="contained" 
-                color="primary" 
-                size="small"
-                onClick={this.handleNewContact}
-              >
-                Novo Contato
+              <Button  variant="contained" color="primary" onClick={this.handleNewContact} >
+                Editar
               </Button>
             </AppHeader>
             <Paper className="phone-detail">
               <PhoneContentItens icon={nameIcon} phoneContentText={`${name} (${nickName})`}/>
               <PhoneContentItens icon={emailIcon} phoneContentText={email} />
               <PhoneContentItens icon={phoneNumerIcon} phoneContentText={phoneNumer} />
+            </Paper>
+            <Paper className="action-bar">
+              <Button variant="contained" color="primary"onClick={this.handleHistoryBack}>
+                Voltar
+              </Button>
             </Paper>
           </>
         )}
