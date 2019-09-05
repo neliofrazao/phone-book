@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { axios } from '../../util'
 import {  Button, Paper } from '@material-ui/core'
-import { EmailRounded, PersonPinCircle, PhoneAndroidRounded } from '@material-ui/icons'
+import { 
+  EmailRounded,
+  Edit,
+  KeyboardArrowLeftRounded,
+  PersonPinCircle,
+  PhoneAndroidRounded
+} from '@material-ui/icons'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import PhoneContentItens from '../../component/PhoneContentItens'
@@ -25,6 +31,10 @@ class ContactDetail extends Component {
   }
 
   handleNewContact = () => {
+    this.props.history.push('new-contact')
+  }
+
+  handleEditContact = () => {
     this.props.history.push('edit-contact')
   }
 
@@ -50,7 +60,7 @@ class ContactDetail extends Component {
           <>
             <AppHeader title={name} >
               <Button  variant="contained" color="primary" onClick={this.handleNewContact} >
-                Editar
+                Novo Contato
               </Button>
             </AppHeader>
             <Paper className="contact-detail">
@@ -59,7 +69,20 @@ class ContactDetail extends Component {
               <PhoneContentItens icon={phoneNumerIcon} phoneContentText={phoneNumer} />
             </Paper>
             <Paper className="action-bar">
-              <Button variant="contained" color="primary"onClick={this.handleHistoryBack}>
+              <Button 
+                variant="contained" 
+                className="action-bar-buttons" 
+                onClick={this.handleDeleteContact}
+              >
+                <Edit />
+                Editar Contato
+              </Button>
+              <Button 
+                variant="contained" 
+                color="primary" 
+                onClick={this.handleHistoryBack}
+              >
+                <KeyboardArrowLeftRounded />
                 Voltar
               </Button>
             </Paper>

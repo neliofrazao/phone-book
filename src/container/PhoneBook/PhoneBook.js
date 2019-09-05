@@ -21,7 +21,7 @@ class PhoneBook extends Component {
     })
   }
 
-  handlePhoneDetail = contactId => {
+  handleContactDetail = contactId => {
     this.props.history.push(`contact-detail/${contactId}`)
   }
 
@@ -29,7 +29,7 @@ class PhoneBook extends Component {
     this.props.history.push(`new-contact`)
   }
 
-  handleDeletePhone = contactId => {
+  handleDeleteContact = contactId => {
     this.setState({ isLoading:true })
     axios.delete(`phoneList/${contactId}`).then(() => this.getPhoneBooklist())
   }
@@ -46,19 +46,14 @@ class PhoneBook extends Component {
         ) : (
           <>
             <AppHeader title="Agenda Telefônica" >
-              <Button 
-                variant="contained" 
-                color="primary" 
-                size="small"
-                onClick={this.handleNewContact}
-              >
+              <Button variant="contained" color="primary" onClick={this.handleNewContact}>
                 Novo Contato
               </Button>
             </AppHeader>
             <PhoneList
               phones={this.state.phoneList}
-              handlePhoneDetail={this.handlePhoneDetail}
-              handleDeletePhone={this.handleDeletePhone}
+              handleContactDetail={this.handleContactDetail}
+              handleDeleteContact={this.handleDeleteContact}
             />
           </>
         )}

@@ -12,9 +12,9 @@ import './PhoneList.styles.css'
 
 const emptySatateText = "Não existe nenhum contato cadastrado na sua agenda"
 
-const PhoneList = ({ handleDeletePhone, handlePhoneDetail, phones }) => {
-  const handleDetailClick = phoneId => () => handlePhoneDetail(phoneId)
-  const handleDeleteClick = phoneId => () => handleDeletePhone(phoneId)
+const PhoneList = ({ handleDeleteContact, handleContactDetail, phones }) => {
+  const handleDetailClick = phoneId => () => handleContactDetail(phoneId)
+  const handleDeleteClick = phoneId => () => handleDeleteContact(phoneId)
   const hasPhoneList = !phones.length
 
   return (
