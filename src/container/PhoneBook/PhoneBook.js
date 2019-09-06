@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import PhoneList from '../../component/PhoneList'
-import Loading from '../../shared/Loading'
+import Loading from '../../component/Loading'
 
 class PhoneBook extends Component {
   constructor(props){
