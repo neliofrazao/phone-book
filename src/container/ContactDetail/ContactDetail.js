@@ -31,11 +31,11 @@ class ContactDetail extends Component {
   }
 
   handleNewContact = () => {
-    this.props.history.push('new-contact')
+    this.props.history.push('/new-contact')
   }
 
-  handleEditContact = () => {
-    this.props.history.push('edit-contact')
+  handleEditContact = contactId => {
+    this.props.history.push(`/edit-contact${contactId}`)
   }
 
   handleHistoryBack = () => {
@@ -50,7 +50,7 @@ class ContactDetail extends Component {
     const nameIcon = <PersonPinCircle />
     const emailIcon = <EmailRounded />
     const phoneNumberIcon = <PhoneAndroidRounded />
-    const { name, nickName, email, phoneNumber } = this.state.contactDetail
+    const { id, name, nickName, email, phoneNumber } = this.state.contactDetail
     
     return(
       <MainTemplate>
@@ -72,7 +72,7 @@ class ContactDetail extends Component {
               <Button 
                 variant="contained" 
                 className="action-bar-buttons" 
-                onClick={this.handleDeleteContact}
+                onClick={() => this.handleEditContact(id)}
               >
                 <Edit />
                 Editar Contato
