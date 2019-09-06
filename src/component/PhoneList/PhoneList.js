@@ -35,11 +35,11 @@ const PhoneList = ({ handleDeleteContact, handleContactDetail, phones }) => {
                     </Typography>
                   </CardContent>
                   <CardActions className="card-actions">
-                    <Button size="small" onClick={handleDetailClick(phone.id)}>
-                      <KeyboardArrowRightRounded /> Detalhes
-                    </Button>
                     <Button size="small" onClick={handleDeleteClick(phone.id)}>
                       <DeleteRounded /> Apagar
+                    </Button>
+                    <Button size="small" onClick={handleDetailClick(phone.id)}>
+                      <KeyboardArrowRightRounded /> Detalhes
                     </Button>
                   </CardActions>
                 </Card>
