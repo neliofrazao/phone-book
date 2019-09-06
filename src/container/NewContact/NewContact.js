@@ -4,7 +4,8 @@ import { axios } from '../../util'
 import { Button } from '@material-ui/core'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate from '../../template/MainTemplate'
-import PhoneBookForm from '../../component/PhoneBookForm' 
+import PhoneBookForm from '../../component/PhoneBookForm'
+import Notification from '../../component/Notification'
 import Loading from '../../component/Loading'
 
 class ContactDetail extends Component {
@@ -12,6 +13,7 @@ class ContactDetail extends Component {
     super(props)
     this.state = {
       isLoading: false,
+      notificationOpen: false
     }
   }
 
@@ -22,9 +24,11 @@ class ContactDetail extends Component {
   saveData = payload => {
     this.setState({ isLoading: true })
     axios.post(`phoneList`, payload).then(() => {
-      this.setState({ isLoading: false })
+      this.setState({ isLoading: false, notificationOpen:true })
     })
   }
+
+  handleNotificationClose = () =>  this.setState({ notificationOpen: false })
 
   render() {
     return (
@@ -38,18 +42,22 @@ class ContactDetail extends Component {
           <Loading />
         ) : (
           <Formik
-              onSubmit={this.saveData}
-              render={formikProps => (
-                <form onSubmit={formikProps.handleSubmit}>
-                  <PhoneBookForm 
-                    handleChange={formikProps.handleChange} 
-                    values={formikProps.values} 
-                  />
-                </form>
+            onSubmit={this.saveData}
+            render={formikProps => (
+              <form onSubmit={formikProps.handleSubmit}>
+                <PhoneBookForm 
+                  handleChange={formikProps.handleChange} 
+                  values={formikProps.values} 
+                />
+              </form>
             )}
           />
         )}
-        
+        <Notification
+          handleOpen={this.state.notificationOpen}
+          handleClose={this.handleNotificationClose}
+          NotificationText="Contato Salvo com sucesso!"
+        />
       </MainTemplate>
     )
   }
