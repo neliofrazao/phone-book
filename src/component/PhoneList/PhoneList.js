@@ -31,7 +31,7 @@ const PhoneList = ({ handleDeleteContact, handleContactDetail, phones }) => {
                       <PersonPinCircle /> {phone.nickName}
                     </Typography>
                     <Typography color="textSecondary">
-                      <PhoneAndroidRounded /> {phone.phoneNumer}
+                      <PhoneAndroidRounded /> {phone.phoneNumber}
                     </Typography>
                   </CardContent>
                   <CardActions className="card-actions">

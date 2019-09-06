@@ -49,8 +49,8 @@ class ContactDetail extends Component {
   render() {
     const nameIcon = <PersonPinCircle />
     const emailIcon = <EmailRounded />
-    const phoneNumerIcon = <PhoneAndroidRounded />
-    const { name, nickName, email, phoneNumer } = this.state.contactDetail
+    const phoneNumberIcon = <PhoneAndroidRounded />
+    const { name, nickName, email, phoneNumber } = this.state.contactDetail
     
     return(
       <MainTemplate>
@@ -66,7 +66,7 @@ class ContactDetail extends Component {
             <Paper className="contact-detail">
               <PhoneContentItens icon={nameIcon} phoneContentText={`${name} (${nickName})`}/>
               <PhoneContentItens icon={emailIcon} phoneContentText={email} />
-              <PhoneContentItens icon={phoneNumerIcon} phoneContentText={phoneNumer} />
+              <PhoneContentItens icon={phoneNumberIcon} phoneContentText={phoneNumber} />
             </Paper>
             <Paper className="action-bar">
               <Button 
