@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { axios } from '../../util'
-import { Button, Grid, Paper, TextField } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate from '../../template/MainTemplate'
+import PhoneBookForm from '../../component/PhoneBookForm' 
 import Loading from '../../component/Loading'
 
 class ContactDetail extends Component {
@@ -12,13 +13,6 @@ class ContactDetail extends Component {
     this.state = {
       isLoading: false,
     }
-  }
-  
-  getContactDetail = () => {
-    const contactId = this.props.match.params.contactId
-    axios.get(`phoneList/${contactId}`).then(({ data }) => {
-      this.setState({ isLoading: false, contactDetail: data })
-    })
   }
 
   handleHistoryBack = () => {
@@ -47,60 +41,10 @@ class ContactDetail extends Component {
               onSubmit={this.saveData}
               render={formikProps => (
                 <form onSubmit={formikProps.handleSubmit}>
-                  <Paper className="contact-detail">
-                    <Grid container justify="center" spacing={3}>
-                      <Grid item md={12} lg={6}>
-                        <TextField
-                          fullWidth
-                          id="name"
-                          label="Nome"
-                          name="name"
-                          value={formikProps.values.name || ''}
-                          onChange={formikProps.handleChange}
-                          margin="normal"
-                        />
-                      </Grid>
-                      <Grid item md={12} lg={6}>
-                        <TextField
-                          fullWidth
-                          id="nickName"
-                          label="Apelido"
-                          name="nickName"
-                          value={formikProps.values.nickName || ''}
-                          onChange={formikProps.handleChange}
-                          margin="normal"
-                        />
-                      </Grid>
-                      <Grid item md={12} lg={6}>
-                        <TextField
-                          fullWidth
-                          id="email"
-                          label="Email"
-                          type="email"
-                          name="email"
-                          value={formikProps.values.email || ''}
-                          onChange={formikProps.handleChange}
-                          margin="normal"
-                        />
-                      </Grid>
-                      <Grid item md={12} lg={6}>
-                        <TextField
-                          fullWidth
-                          id="phoneNumber"
-                          label="Telefone"
-                          name="phoneNumber"
-                          value={formikProps.values.phoneNumber || ''}
-                          onChange={formikProps.handleChange}
-                          margin="normal"
-                        />
-                      </Grid>
-                    </Grid>
-                  </Paper>
-                  <Paper className="action-bar">
-                    <Button variant="contained" color="primary" type="submit" >
-                      Salvar
-                    </Button>
-                  </Paper>
+                  <PhoneBookForm 
+                    handleChange={formikProps.handleChange} 
+                    values={formikProps.values} 
+                  />
                 </form>
             )}
           />
