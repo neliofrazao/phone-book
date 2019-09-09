@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Button, Grid, Paper, TextField } from '@material-ui/core'
 import ActionBar from '../ActionBar'
 
@@ -60,5 +61,10 @@ const PhoneBookForm = ({ values, handleChange }) => (
     </ActionBar>
   </>
 )
+
+PhoneBookForm.prototype = {
+  values: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+}
 
 export default PhoneBookForm
