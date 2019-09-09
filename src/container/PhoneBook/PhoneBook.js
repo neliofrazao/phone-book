@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from '@material-ui/core'
 import AppHeader from '../../component/AppHeader/AppHeader';
-import MainTemplate  from '../../template/MainTemplate'
 import PhoneList from '../../component/PhoneList'
 import Loading from '../../component/Loading'
 import phoneBook from  '../../api/PhoneBook/PhoneBook'
@@ -52,7 +51,7 @@ class PhoneBook extends Component {
 
   render() {
     return(
-      <MainTemplate>
+      <>
         <AppHeader pageTitle={PAGE_TITLE} >
           <Button variant="contained" color="primary" onClick={this.handleNewContact}>
             Novo Contato
@@ -67,7 +66,7 @@ class PhoneBook extends Component {
             handleDeleteContact={this.handleDeleteContact}
           />
         )}
-      </MainTemplate>
+      </>
     )
   }
 }
