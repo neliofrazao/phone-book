@@ -18,8 +18,8 @@ class PhoneBook extends Component {
   getPhoneBooklist = async () => {
     this.setState({ isLoading: true })
     try {
-      const phoneList = await getPhoneBookList.getPhoneBookList()
-      this.setState({ phoneList: phoneList })
+      const phoneListData = await getPhoneBookList.getPhoneBookList()
+      this.setState({ phoneList: phoneListData })
     } catch(error) {
       console.log(error)
     }
@@ -34,9 +34,14 @@ class PhoneBook extends Component {
     this.props.history.push(`new-contact`)
   }
 
-  handleDeleteContact = contactId => {
-    this.setState({ isLoading:true })
-    axios.delete(`phoneList/${contactId}`).then(() => this.getPhoneBooklist())
+  handleDeleteContact = async contactId => {
+    try {
+      await getPhoneBookList.deleteContact(contactId)
+      this.getPhoneBooklist()
+    } catch(error){
+      console.log(error)
+      this.setState({ isLoading:false })
+    }
   }
 
   componentDidMount() {
