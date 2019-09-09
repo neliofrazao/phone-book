@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Button, Card, CardActions, CardContent, Grid } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography';
 import {
@@ -49,6 +50,12 @@ const CardsPhoneBook = ({ handleDeleteContact, handleContactDetail, phones }) =>
         )}
     </>
   )
+}
+
+CardsPhoneBook.prototype = {
+  handleDeleteContact: PropTypes.func.isRequired,
+  handleContactDetail: PropTypes.func.isRequired,
+  phones: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default CardsPhoneBook
