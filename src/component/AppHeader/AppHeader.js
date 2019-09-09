@@ -3,7 +3,7 @@ import { Grid, Typography } from '@material-ui/core'
 import { Helmet } from 'react-helmet'
 import  './AppHeader.styles.css';
 
-const AppHeader = ({ windowTitle= 'Phone Book', pageTitle = '', children }) => (
+const AppHeader = ({ windowTitle= 'Phone Book', pageTitle, children }) => (
   <header className="header">
     <Helmet>
       <title>{windowTitle}</title>

@@ -13,6 +13,7 @@ import ContactItens from '../../component/ContactItens'
 import Loading from '../../component/Loading'
 import phoneBook from  '../../api/PhoneBook/PhoneBook'
 import ActionBar from '../../component/ActionBar'
+import { windowTitle } from '../../util/constants/constants'
 import './ContactDetail.styles.css'
 
 class ContactDetail extends Component {
@@ -65,7 +66,7 @@ class ContactDetail extends Component {
           <Loading />
         ) : (
           <>
-            <AppHeader title={name} >
+            <AppHeader pageTitle={name}  windowTitle={`${name} ${windowTitle.TITLE}`} >
               <Button  variant="contained" color="primary" onClick={this.handleNewContact} >
                 Novo Contato
               </Button>
