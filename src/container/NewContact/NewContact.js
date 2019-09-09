@@ -7,6 +7,10 @@ import PhoneBookForm from '../../component/PhoneBookForm'
 import Notification from '../../component/Notification'
 import Loading from '../../component/Loading'
 import phoneBook from  '../../api/PhoneBook/PhoneBook'
+import { windowTitle } from '../../util/constants/constants'
+
+const PAGE_TITLE = 'New Contact'
+const WINDOW_TITLE = `${PAGE_TITLE} ${windowTitle.TITLE}`
 
 class ContactDetail extends Component {
   constructor(props){
@@ -37,7 +41,7 @@ class ContactDetail extends Component {
   render() {
     return (
       <MainTemplate>
-        <AppHeader title="Novo Contato" >
+        <AppHeader pageTitle={PAGE_TITLE}  windowTitle={WINDOW_TITLE} >
           <Button variant="contained" color="primary" onClick={this.handleHistoryBack} >
             Agenda Telefônica
           </Button>
