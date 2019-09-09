@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Grid, Paper, TextField } from '@material-ui/core'
+import ActionBar from '../ActionBar'
 
 const PhoneBookForm = ({ values, handleChange }) => (
   <>
@@ -52,11 +53,11 @@ const PhoneBookForm = ({ values, handleChange }) => (
         </Grid>
       </Grid>
     </Paper>
-    <Paper className="action-bar">
+    <ActionBar>
       <Button variant="contained" color="primary" type="submit" >
         Salvar
       </Button>
-    </Paper>
+    </ActionBar>
   </>
 )
 

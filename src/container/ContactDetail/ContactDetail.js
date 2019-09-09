@@ -11,7 +11,8 @@ import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import ContactItens from '../../component/ContactItens'
 import Loading from '../../component/Loading'
-import getPhoneBookList from  '../../api/PhoneBook/PhoneBook'
+import phoneBook from  '../../api/PhoneBook/PhoneBook'
+import ActionBar from '../../component/ActionBar'
 import './ContactDetail.styles.css'
 
 class ContactDetail extends Component {
@@ -27,7 +28,7 @@ class ContactDetail extends Component {
     this.setState({ isLoading: true })
     try {
       const contactId = this.props.match.params.contactId
-      const getContactInfo = await getPhoneBookList.getContactInfo(contactId)
+      const getContactInfo = await phoneBook.getContactInfo(contactId)
       this.setState({ contactDetail: getContactInfo })
     }
     catch(error) {
@@ -74,7 +75,7 @@ class ContactDetail extends Component {
               <ContactItens icon={emailIcon} phoneContentText={email} />
               <ContactItens icon={phoneNumberIcon} phoneContentText={phoneNumber} />
             </Paper>
-            <Paper className="action-bar">
+            <ActionBar>
               <Button 
                 variant="contained" 
                 className="action-bar-buttons" 
@@ -91,7 +92,7 @@ class ContactDetail extends Component {
                 <KeyboardArrowLeftRounded />
                 Voltar
               </Button>
-            </Paper>
+            </ActionBar>
           </>
         )}
       </MainTemplate>

@@ -4,7 +4,7 @@ import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import PhoneList from '../../component/PhoneList'
 import Loading from '../../component/Loading'
-import getPhoneBookList from  '../../api/PhoneBook/PhoneBook'
+import phoneBook from  '../../api/PhoneBook/PhoneBook'
 class PhoneBook extends Component {
   constructor(props){
     super(props)
@@ -17,7 +17,7 @@ class PhoneBook extends Component {
   getPhoneBooklist = async () => {
     this.setState({ isLoading: true })
     try {
-      const phoneListData = await getPhoneBookList.getPhoneBookList()
+      const phoneListData = await phoneBook.getPhoneBookList()
       this.setState({ phoneList: phoneListData })
     } catch(error) {
       console.log(error)
@@ -35,7 +35,7 @@ class PhoneBook extends Component {
 
   handleDeleteContact = async contactId => {
     try {
-      await getPhoneBookList.deleteContact(contactId)
+      await phoneBook.deleteContact(contactId)
       this.getPhoneBooklist()
     } catch(error){
       console.log(error)

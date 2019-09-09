@@ -6,7 +6,7 @@ import MainTemplate from '../../template/MainTemplate'
 import PhoneBookForm from '../../component/PhoneBookForm'
 import Notification from '../../component/Notification'
 import Loading from '../../component/Loading'
-import getPhoneBookList from  '../../api/PhoneBook/PhoneBook'
+import phoneBook from  '../../api/PhoneBook/PhoneBook'
 
 class ContactDetail extends Component {
   constructor(props){
@@ -24,7 +24,7 @@ class ContactDetail extends Component {
   saveData = async payload => {
     this.setState({ isLoading: true })
     try {
-      await getPhoneBookList.createNewContact(payload)
+      await phoneBook.createNewContact(payload)
       this.setState({ notificationOpen:true })
     } catch (error) {
       console.log(error)
