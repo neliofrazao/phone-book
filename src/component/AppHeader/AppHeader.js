@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Grid, Typography } from '@material-ui/core'
 import { Helmet } from 'react-helmet'
 import  './AppHeader.styles.css';
 
-const AppHeader = ({ windowTitle= 'Phone Book', pageTitle, children }) => (
+const AppHeader = ({ children, pageTitle, windowTitle }) => (
   <header className="header">
     <Helmet>
       <title>{windowTitle}</title>
@@ -19,7 +20,17 @@ const AppHeader = ({ windowTitle= 'Phone Book', pageTitle, children }) => (
       </Grid>
     </Grid>
   </header>
-
 )
+
+AppHeader.propTypes = {
+  children: PropTypes.node,
+  pageTitle: PropTypes.string.isRequired,
+  windowTitle: PropTypes.string
+}
+
+AppHeader.defaultProps = {
+  children : null,
+  windowTitle: 'Phone Book',
+}
 
 export default AppHeader
