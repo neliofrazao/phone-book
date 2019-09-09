@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { axios } from '../../util'
 import {  Button, Paper } from '@material-ui/core'
 import { 
   EmailRounded,
@@ -12,22 +11,29 @@ import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import PhoneContentItens from '../../component/PhoneContentItens'
 import Loading from '../../component/Loading'
+import getPhoneBookList from  '../../api/PhoneBook/PhoneBook'
 import './ContactDetail.styles.css'
 
 class ContactDetail extends Component {
   constructor(props){
     super(props)
     this.state = {
-      isLoading: true,
+      isLoading: false,
       contactDetail : [],
     }
   }
 
-  getContactDetail = () => {
-    const contactId = this.props.match.params.contactId
-    axios.get(`phoneList/${contactId}`).then(({ data }) => {
-      this.setState({ isLoading: false, contactDetail: data })
-    })
+  getContactDetail = async () => {
+    this.setState({ isLoading: true })
+    try {
+      const contactId = this.props.match.params.contactId
+      const getContactInfo = await getPhoneBookList.getContactInfo(contactId)
+      this.setState({ contactDetail: getContactInfo })
+    }
+    catch(error) {
+      console.log(error)
+    }
+    this.setState({ isLoading: false})
   }
 
   handleNewContact = () => {
