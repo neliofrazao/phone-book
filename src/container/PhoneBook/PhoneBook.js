@@ -5,20 +5,25 @@ import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
 import PhoneList from '../../component/PhoneList'
 import Loading from '../../component/Loading'
-
+import getPhoneBookList from  '../../api/PhoneBook/PhoneBook'
 class PhoneBook extends Component {
   constructor(props){
     super(props)
     this.state = {
-      isLoading: true,
+      isLoading: false,
       phoneList : [],
     }
   }
 
-  getPhoneBooklist = () => {
-    axios.get('phoneList').then(({ data }) => {
-      this.setState({ isLoading: false, phoneList: data })
-    })
+  getPhoneBooklist = async () => {
+    this.setState({ isLoading: true })
+    try {
+      const phoneList = await getPhoneBookList.getPhoneBookList()
+      this.setState({ phoneList: phoneList })
+    } catch(error) {
+      console.log(error)
+    }
+    this.setState({ isLoading: false })
   }
 
   handleContactDetail = contactId => {
