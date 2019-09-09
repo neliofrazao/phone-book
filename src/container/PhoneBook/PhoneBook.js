@@ -50,7 +50,7 @@ class PhoneBook extends Component {
   render() {
     return(
       <MainTemplate>
-        <AppHeader title="Agenda Telefônica" >
+        <AppHeader titlePage="Agenda Telefônica" >
           <Button variant="contained" color="primary" onClick={this.handleNewContact}>
             Novo Contato
           </Button>

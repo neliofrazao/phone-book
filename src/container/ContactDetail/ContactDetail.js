@@ -78,19 +78,19 @@ class ContactDetail extends Component {
             <ActionBar>
               <Button 
                 variant="contained" 
-                className="action-bar-buttons" 
-                onClick={() => this.handleEditContact(id)}
-              >
-                <Edit />
-                Editar Contato
-              </Button>
-              <Button 
-                variant="contained" 
-                color="primary" 
                 onClick={this.handleHistoryBack}
               >
                 <KeyboardArrowLeftRounded />
                 Voltar
+              </Button>
+              <Button
+                color="primary"
+                className="action-bar-buttons"
+                variant="contained"
+                onClick={() => this.handleEditContact(id)}
+              >
+                <Edit />
+                Editar Contato
               </Button>
             </ActionBar>
           </>
