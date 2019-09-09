@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { Button } from '@material-ui/core'
 import AppHeader from '../../component/AppHeader/AppHeader';
-import MainTemplate from '../../template/MainTemplate'
 import PhoneBookForm from '../../component/PhoneBookForm'
 import Notification from '../../component/Notification'
 import Loading from '../../component/Loading'
@@ -40,8 +39,8 @@ class ContactDetail extends Component {
 
   render() {
     return (
-      <MainTemplate>
-        <AppHeader pageTitle={PAGE_TITLE}  windowTitle={WINDOW_TITLE} >
+      <>
+        <AppHeader pageTitle={PAGE_TITLE} windowTitle={WINDOW_TITLE} >
           <Button variant="contained" color="primary" onClick={this.handleHistoryBack} >
             Agenda Telefônica
           </Button>
@@ -66,7 +65,7 @@ class ContactDetail extends Component {
           handleClose={this.handleNotificationClose}
           NotificationText="Contato Salvo com sucesso!"
         />
-      </MainTemplate>
+      </>
     )
   }
 }
