@@ -9,7 +9,7 @@ import {
 } from '@material-ui/icons'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate  from '../../template/MainTemplate'
-import PhoneContentItens from '../../component/PhoneContentItens'
+import ContactItens from '../../component/ContactItens'
 import Loading from '../../component/Loading'
 import getPhoneBookList from  '../../api/PhoneBook/PhoneBook'
 import './ContactDetail.styles.css'
@@ -70,9 +70,9 @@ class ContactDetail extends Component {
               </Button>
             </AppHeader>
             <Paper className="contact-detail">
-              <PhoneContentItens icon={nameIcon} phoneContentText={`${name} (${nickName})`}/>
-              <PhoneContentItens icon={emailIcon} phoneContentText={email} />
-              <PhoneContentItens icon={phoneNumberIcon} phoneContentText={phoneNumber} />
+              <ContactItens icon={nameIcon} phoneContentText={`${name} (${nickName})`}/>
+              <ContactItens icon={emailIcon} phoneContentText={email} />
+              <ContactItens icon={phoneNumberIcon} phoneContentText={phoneNumber} />
             </Paper>
             <Paper className="action-bar">
               <Button 
