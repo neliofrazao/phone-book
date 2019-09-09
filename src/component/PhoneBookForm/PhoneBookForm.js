@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Button, Grid, Paper, TextField } from '@material-ui/core'
 import ActionBar from '../ActionBar'
 
-const PhoneBookForm = ({ values, handleChange }) => (
+const PhoneBookForm = ({ errors, values, handleChange }) => (
   <>
     <Paper className="contact-detail">
       <Grid container justify="center" spacing={3}>
@@ -14,6 +14,8 @@ const PhoneBookForm = ({ values, handleChange }) => (
             label="Nome"
             name="name"
             value={values.name || ''}
+            error={Boolean(errors.name)}
+            helperText={errors.name}
             onChange={handleChange}
             margin="normal"
           />
@@ -25,6 +27,8 @@ const PhoneBookForm = ({ values, handleChange }) => (
             label="Apelido"
             name="nickName"
             value={values.nickName || ''}
+            error={Boolean(errors.nickName)}
+            helperText={errors.nickName}
             onChange={handleChange}
             margin="normal"
           />
@@ -37,6 +41,8 @@ const PhoneBookForm = ({ values, handleChange }) => (
             type="email"
             name="email"
             value={values.email || ''}
+            error={Boolean(errors.email)}
+            helperText={errors.email}
             onChange={handleChange}
             margin="normal"
           />
@@ -48,6 +54,8 @@ const PhoneBookForm = ({ values, handleChange }) => (
             label="Telefone"
             name="phoneNumber"
             value={values.phoneNumber || ''}
+            error={Boolean(errors.phoneNumber)}
+            helperText={errors.phoneNumber}
             onChange={handleChange}
             margin="normal"
           />

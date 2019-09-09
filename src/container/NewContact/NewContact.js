@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { Button } from '@material-ui/core'
+import * as Yup from 'yup'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import PhoneBookForm from '../../component/PhoneBookForm'
 import Notification from '../../component/Notification'
@@ -10,6 +11,14 @@ import { windowTitle } from '../../util/constants/constants'
 
 const PAGE_TITLE = 'New Contact'
 const WINDOW_TITLE = `${PAGE_TITLE} ${windowTitle.TITLE}`
+const REQUIRED_MESSAGE = 'Campo obrigatório'
+
+const schema = Yup.object().shape({
+  name: Yup.string().required(REQUIRED_MESSAGE),
+  nickName: Yup.string().required(REQUIRED_MESSAGE),
+  email: Yup.string().required(REQUIRED_MESSAGE),
+  phoneNumber: Yup.string().required(REQUIRED_MESSAGE)
+})
 
 class ContactDetail extends Component {
   constructor(props){
@@ -50,9 +59,11 @@ class ContactDetail extends Component {
         ) : (
           <Formik
             onSubmit={this.saveData}
+            validationSchema={schema}
             render={formikProps => (
               <form onSubmit={formikProps.handleSubmit}>
                 <PhoneBookForm 
+                  errors={formikProps.errors}
                   handleChange={formikProps.handleChange} 
                   values={formikProps.values} 
                 />
