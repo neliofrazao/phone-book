@@ -71,9 +71,9 @@ class ContactDetail extends Component {
               </Button>
             </AppHeader>
             <Paper className="contact-detail">
-              <ContactItens icon={nameIcon} phoneContentText={`${name} (${nickName})`}/>
-              <ContactItens icon={emailIcon} phoneContentText={email} />
-              <ContactItens icon={phoneNumberIcon} phoneContentText={phoneNumber} />
+              <ContactItens contactIcon={nameIcon} contactContentText={`${name} (${nickName})`}/>
+              <ContactItens contactIcon={emailIcon} contactContentText={email} />
+              <ContactItens contactIcon={phoneNumberIcon} contactContentText={phoneNumber} />
             </Paper>
             <ActionBar>
               <Button 
