@@ -19,13 +19,12 @@ class ContactDetail extends Component {
   constructor(props){
     super(props)
     this.state = {
-      isLoading: false,
+      isLoading: true,
       contactDetail : [],
     }
   }
 
   getContactDetail = async () => {
-    this.setState({ isLoading: true })
     try {
       const contactId = this.props.match.params.contactId
       const getContactInfo = await phoneBook.getContactInfo(contactId)

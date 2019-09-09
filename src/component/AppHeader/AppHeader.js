@@ -16,7 +16,7 @@ const AppHeader = ({ children, pageTitle, windowTitle }) => (
         </Typography>
       </Grid>
       <Grid item sm={12} md className="text-right">
-          {children}
+        {children}
       </Grid>
     </Grid>
   </header>
