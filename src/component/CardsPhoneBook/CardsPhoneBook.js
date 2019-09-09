@@ -8,18 +8,18 @@ import {
   PhoneAndroidRounded,
 } from '@material-ui/icons'
 import EmptySatate from '../EmptySatate'
-import './PhoneList.styles.css'
+import './CardsPhoneBook.styles.css'
 
 const emptySatateText = "Não existe nenhum contato cadastrado na sua agenda"
 
-const PhoneList = ({ handleDeleteContact, handleContactDetail, phones }) => {
+const CardsPhoneBook = ({ handleDeleteContact, handleContactDetail, phones }) => {
   const handleDetailClick = phoneId => () => handleContactDetail(phoneId)
   const handleDeleteClick = phoneId => () => handleDeleteContact(phoneId)
-  const hasPhoneList = !phones.length
+  const hasCardsPhoneBook = !phones.length
 
   return (
     <>
-      {hasPhoneList ? (
+      {hasCardsPhoneBook ? (
         <EmptySatate emptySatateText={emptySatateText} />
       ) : (
           <Grid container justify="center" spacing={3}>
@@ -51,4 +51,4 @@ const PhoneList = ({ handleDeleteContact, handleContactDetail, phones }) => {
   )
 }
 
-export default PhoneList
+export default CardsPhoneBook

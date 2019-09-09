@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from '@material-ui/core'
 import AppHeader from '../../component/AppHeader/AppHeader';
-import PhoneList from '../../component/PhoneList'
+import CardsPhoneBook from '../../component/CardsPhoneBook'
 import Loading from '../../component/Loading'
 import phoneBook from  '../../api/PhoneBook/PhoneBook'
 
@@ -60,7 +60,7 @@ class PhoneBook extends Component {
         {this.state.isLoading ? (
           <Loading />
         ) : (
-          <PhoneList
+          <CardsPhoneBook
             phones={this.state.phoneList}
             handleContactDetail={this.handleContactDetail}
             handleDeleteContact={this.handleDeleteContact}
