@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import withMainTemplate from './enhancers/WithMainTemplate/WithMainTemplate'
+import withMainTemplate from './enhancers/WithMainTemplate'
 import PhoneBook  from './container/PhoneBook'
 import ContactDetail  from './container/ContactDetail'
 import NewContact  from './container/NewContact'
