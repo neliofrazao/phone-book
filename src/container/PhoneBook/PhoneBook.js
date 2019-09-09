@@ -50,21 +50,19 @@ class PhoneBook extends Component {
   render() {
     return(
       <MainTemplate>
+        <AppHeader title="Agenda Telefônica" >
+          <Button variant="contained" color="primary" onClick={this.handleNewContact}>
+            Novo Contato
+          </Button>
+        </AppHeader>
         {this.state.isLoading ? (
           <Loading />
         ) : (
-          <>
-            <AppHeader title="Agenda Telefônica" >
-              <Button variant="contained" color="primary" onClick={this.handleNewContact}>
-                Novo Contato
-              </Button>
-            </AppHeader>
-            <PhoneList
-              phones={this.state.phoneList}
-              handleContactDetail={this.handleContactDetail}
-              handleDeleteContact={this.handleDeleteContact}
-            />
-          </>
+          <PhoneList
+            phones={this.state.phoneList}
+            handleContactDetail={this.handleContactDetail}
+            handleDeleteContact={this.handleDeleteContact}
+          />
         )}
       </MainTemplate>
     )

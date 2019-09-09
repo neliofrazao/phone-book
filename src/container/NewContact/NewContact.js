@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
-import { axios } from '../../util'
 import { Button } from '@material-ui/core'
 import AppHeader from '../../component/AppHeader/AppHeader';
 import MainTemplate from '../../template/MainTemplate'
 import PhoneBookForm from '../../component/PhoneBookForm'
 import Notification from '../../component/Notification'
 import Loading from '../../component/Loading'
+import getPhoneBookList from  '../../api/PhoneBook/PhoneBook'
 
 class ContactDetail extends Component {
   constructor(props){
@@ -21,11 +21,15 @@ class ContactDetail extends Component {
     this.props.history.push('/')
   }
 
-  saveData = payload => {
+  saveData = async payload => {
     this.setState({ isLoading: true })
-    axios.post(`phoneList`, payload).then(() => {
-      this.setState({ isLoading: false, notificationOpen:true })
-    })
+    try {
+      await getPhoneBookList.createNewContact(payload)
+      this.setState({ notificationOpen:true })
+    } catch (error) {
+      console.log(error)
+    }
+    this.setState({ isLoading: false })
   }
 
   handleNotificationClose = () =>  this.setState({ notificationOpen: false })
