@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Grid } from '@material-ui/core';
 import  './MainTemplate.styles.css';
 
@@ -12,6 +13,10 @@ const MainTemplate = ({ component: Component, ...rest }) => {
       </Grid>
     </main>
   )
+}
+
+MainTemplate.propTypes = {
+  component: PropTypes.func.isRequired,
 }
 
 export default MainTemplate
