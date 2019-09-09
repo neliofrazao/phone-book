@@ -5,6 +5,9 @@ import MainTemplate  from '../../template/MainTemplate'
 import PhoneList from '../../component/PhoneList'
 import Loading from '../../component/Loading'
 import phoneBook from  '../../api/PhoneBook/PhoneBook'
+
+const PAGE_TITLE = 'Phone Book'
+
 class PhoneBook extends Component {
   constructor(props){
     super(props)
@@ -50,7 +53,7 @@ class PhoneBook extends Component {
   render() {
     return(
       <MainTemplate>
-        <AppHeader titlePage="Agenda Telefônica" >
+        <AppHeader pageTitle={PAGE_TITLE} >
           <Button variant="contained" color="primary" onClick={this.handleNewContact}>
             Novo Contato
           </Button>
