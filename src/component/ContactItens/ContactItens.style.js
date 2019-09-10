@@ -1,11 +1,11 @@
-export default() => ({
+export default theme => ({
   root: { 
       display: 'flex',
       alignItems: 'center',
-      paddingBottom: '1em'
+      paddingBottom: theme.spacing(2)
     },
   avatar: {
-    marginRight: '.5em',
+    marginRight: theme.spacing(1),
   },
 })
 

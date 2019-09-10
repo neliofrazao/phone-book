@@ -1,6 +1,6 @@
-export default () => ({
+export default theme => ({
   cardName: {
-    paddingBottom: '1em'
+    paddingBottom: theme.spacing(2)
   },
   cardActions : { 
     borderTop: '1px solid #ccc'

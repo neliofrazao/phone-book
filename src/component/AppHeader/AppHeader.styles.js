@@ -1,6 +1,6 @@
-export default () => ({
+export default theme => ({
   root: {
-    margin: [['2em', '0']],
+    margin: [[theme.spacing(4), '0']],
   },
   textRight: {
     textAlign: 'right' 

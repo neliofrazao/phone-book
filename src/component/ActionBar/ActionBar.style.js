@@ -1,10 +1,10 @@
-export default () => ({
+export default theme => ({
   root: {
-    marginTop: '1em',
-    padding: '1em',
+    marginTop: theme.spacing(2),
+    padding: [[theme.spacing(2), theme.spacing(1)]],
     textAlign: 'right',
     '& button': { 
-      marginRight: '1em', 
+      marginRight: theme.spacing(2), 
     },
   },
 })

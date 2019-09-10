@@ -1,10 +1,10 @@
-export default () => ({
+export default theme => ({
   root: {
     width: '100%',
     background: '#eee',
     position: 'relative',
-    paddingRight: '1.5em',
-    paddingLeft: '1.5em',
+    paddingRight: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
     boxSizing: 'border-box',
     minHeight: '100vh',
     zIndex: 1,
