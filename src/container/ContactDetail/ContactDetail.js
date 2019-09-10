@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import {  Button, Paper } from '@material-ui/core'
-import { 
+import { Button, Paper, withStyles } from '@material-ui/core'
+import {
   EmailRounded,
   Edit,
   KeyboardArrowLeftRounded,
@@ -13,7 +13,7 @@ import Loading from '../../component/Loading'
 import phoneBook from  '../../api/PhoneBook/PhoneBook'
 import ActionBar from '../../component/ActionBar'
 import { windowTitle } from '../../util/constants/constants'
-import './ContactDetail.styles.css'
+import styles from './ContactDetail.styles'
 
 class ContactDetail extends Component {
   constructor(props){
@@ -36,17 +36,11 @@ class ContactDetail extends Component {
     this.setState({ isLoading: false})
   }
 
-  handleNewContact = () => {
-    this.props.history.push('/new-contact')
-  }
+  handleNewContact = () => this.props.history.push('/new-contact')
+  handleHistoryBack = () => this.props.history.push('/')
 
-  handleEditContact = contactId => {
-    this.props.history.push(`/edit-contact${contactId}`)
-  }
-
-  handleHistoryBack = () => {
-    this.props.history.push('/')
-  }
+  handleEditContact = contactId => () =>
+    this.props.history.push(`/edit-contact/${contactId}`)
 
   componentDidMount() {
     this.getContactDetail()
@@ -69,16 +63,13 @@ class ContactDetail extends Component {
                 Novo Contato
               </Button>
             </AppHeader>
-            <Paper className="contact-detail">
+            <Paper className={this.props.classes.root}>
               <ContactItens contactIcon={nameIcon} contactContentText={`${name} (${nickName})`}/>
               <ContactItens contactIcon={emailIcon} contactContentText={email} />
               <ContactItens contactIcon={phoneNumberIcon} contactContentText={phoneNumber} />
             </Paper>
             <ActionBar>
-              <Button 
-                variant="contained" 
-                onClick={this.handleHistoryBack}
-              >
+              <Button variant="contained" onClick={this.handleHistoryBack}>
                 <KeyboardArrowLeftRounded />
                 Voltar
               </Button>
@@ -86,7 +77,7 @@ class ContactDetail extends Component {
                 color="primary"
                 className="action-bar-buttons"
                 variant="contained"
-                onClick={() => this.handleEditContact(id)}
+                onClick={this.handleEditContact(id)}
               >
                 <Edit />
                 Editar Contato
@@ -99,4 +90,4 @@ class ContactDetail extends Component {
   }
 }
 
-export default ContactDetail
+export default withStyles(styles)(ContactDetail)
