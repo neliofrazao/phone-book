@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Card, CardActions, CardContent, Grid } from '@material-ui/core'
+import { Button, Card, CardActions, CardContent, Grid, withStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography';
 import {
   DeleteRounded,
@@ -9,11 +9,11 @@ import {
   PhoneAndroidRounded,
 } from '@material-ui/icons'
 import EmptySatate from '../EmptySatate'
-import './CardsPhoneBook.styles.css'
+import style from './CardsPhoneBook.styles'
 
 const emptySatateText = "Não existe nenhum contato cadastrado na sua agenda"
 
-const CardsPhoneBook = ({ handleDeleteContact, handleContactDetail, phones }) => {
+const CardsPhoneBook = ({ classes, handleDeleteContact, handleContactDetail, phones }) => {
   const handleDetailClick = phoneId => () => handleContactDetail(phoneId)
   const handleDeleteClick = phoneId => () => handleDeleteContact(phoneId)
   const hasCardsPhoneBook = !phones.length
@@ -28,14 +28,14 @@ const CardsPhoneBook = ({ handleDeleteContact, handleContactDetail, phones }) =>
               <Grid item sm={12} md={6} lg={3} key={phone.id}>
                 <Card>
                   <CardContent>
-                    <Typography variant="h5" component="h2" className="card-name">
+                    <Typography variant="h5" component="h2" className={classes.cardName}>
                       <PersonPinCircle /> {phone.nickName}
                     </Typography>
                     <Typography color="textSecondary">
                       <PhoneAndroidRounded /> {phone.phoneNumber}
                     </Typography>
                   </CardContent>
-                  <CardActions className="card-actions">
+                  <CardActions className={classes.cardActions}>
                     <Button size="small" onClick={handleDeleteClick(phone.id)}>
                       <DeleteRounded /> Apagar
                     </Button>
@@ -53,9 +53,10 @@ const CardsPhoneBook = ({ handleDeleteContact, handleContactDetail, phones }) =>
 }
 
 CardsPhoneBook.prototype = {
+  classes: PropTypes.object.isRequired,
   handleDeleteContact: PropTypes.func.isRequired,
   handleContactDetail: PropTypes.func.isRequired,
   phones: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
-export default CardsPhoneBook
+export default withStyles(style)(CardsPhoneBook)

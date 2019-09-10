@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Avatar, Grid, Typography } from '@material-ui/core'
-import './ContactItens.style.css'
+import { Avatar, Grid, Typography, withStyles } from '@material-ui/core'
+import style from './ContactItens.style'
 
-const ContactItens = ({ contactContentText, contactIcon }) => (
-  <Grid item xs={12} className="phone-detail-content">
-    <Avatar className="phone-detail-avatar">
+const ContactItens = ({ classes, contactContentText, contactIcon }) => (
+  <Grid item xs={12} className={classes.root}>
+    <Avatar className={classes.avatar}>
       {contactIcon}
     </Avatar>
     <Typography variant="body1" gutterBottom>
@@ -15,8 +15,9 @@ const ContactItens = ({ contactContentText, contactIcon }) => (
 )
 
 ContactItens.prototype = {
+  classes: PropTypes.object.isRequired,
   contactContentText: PropTypes.string.isRequired,
   contactIcon: PropTypes.func.isRequired,
 }
 
-export default ContactItens
+export default withStyles(style)(ContactItens)

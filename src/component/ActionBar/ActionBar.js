@@ -1,16 +1,18 @@
 import React from "react"
 import PropTypes from 'prop-types'
-import { Paper } from '@material-ui/core'
-import './ActionBar.style.css'
+import { Paper, withStyles } from '@material-ui/core'
+import styles from'./ActionBar.style'
 
-const ActionBar = ({ children }) => (
-  <Paper className="action-bar">
+const ActionBar = ({ children, classes }) => (
+  <Paper className={classes.root}>
     { children }
   </Paper>
 )
 
 ActionBar.propTypes = {
   children: PropTypes.node.isRequired,
+  classes: PropTypes.object.isRequired,
 }
 
-export default ActionBar
+
+export default withStyles(styles)(ActionBar)
