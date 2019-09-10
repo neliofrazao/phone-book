@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Grid, Paper } from '@material-ui/core'
+import { Button, Grid, Paper, withStyles } from '@material-ui/core'
 import ActionBar from '../ActionBar'
 import InputField from '../InputField'
+import style from './PhoneBookForm.styles'
 
-const PhoneBookForm = ({ errors, values, handleChange }) => (
+const PhoneBookForm = ({ classes, errors, handleChange, values }) => (
   <>
-    <Paper className="contact-detail">
+    <Paper className={classes.root}>
       <Grid container justify="center" spacing={3}>
         <Grid item md={12} lg={6}>
         <InputField
@@ -55,8 +56,9 @@ const PhoneBookForm = ({ errors, values, handleChange }) => (
 )
 
 PhoneBookForm.prototype = {
-  values: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
+  values: PropTypes.func.isRequired,
 }
 
-export default PhoneBookForm
+export default withStyles(style)(PhoneBookForm)
