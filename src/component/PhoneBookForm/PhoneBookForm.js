@@ -31,6 +31,7 @@ const PhoneBookForm = ({ classes, errors, handleChange, values }) => (
           <InputField
             id="email"
             label="Email"
+            type="email"
             values={values.email}
             errors={errors.email}
             handleChange={handleChange}
@@ -38,11 +39,19 @@ const PhoneBookForm = ({ classes, errors, handleChange, values }) => (
         </Grid>
         <Grid item md={12} lg={6}>
           <InputField
+            withMask
             id="phoneNumber"
             label="Telefone"
             values={values.phoneNumber}
             errors={errors.phoneNumber}
             handleChange={handleChange}
+            inputProps={{
+              options: {
+                numericOnly: true,
+                delimiters: ['(', ') ', '-'],
+                blocks: [0, 2, 5, 4],
+              },
+            }}
           />
         </Grid>
       </Grid>

@@ -16,7 +16,7 @@ const REQUIRED_MESSAGE = 'Campo obrigatório'
 const schema = Yup.object().shape({
   name: Yup.string().required(REQUIRED_MESSAGE),
   nickName: Yup.string().required(REQUIRED_MESSAGE),
-  email: Yup.string().required(REQUIRED_MESSAGE),
+  email: Yup.string().email('Digite um email válido').required(REQUIRED_MESSAGE),
   phoneNumber: Yup.string().required(REQUIRED_MESSAGE)
 })
 
