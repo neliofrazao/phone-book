@@ -37,14 +37,14 @@ class ContactDetail extends Component {
     this.setState({ isLoading: true })
     try {
       await phoneBook.createNewContact(payload)
-      this.setState({ notificationOpen:true })
+      this.setState({ notificationOpen: true })
     } catch (error) {
       console.log(error)
     }
     this.setState({ isLoading: false })
   }
 
-  handleNotificationClose = () =>  this.setState({ notificationOpen: false })
+  handleNotificationClose = () => this.setState({ notificationOpen: false })
 
   render() {
     return (
@@ -62,10 +62,10 @@ class ContactDetail extends Component {
             validationSchema={schema}
             render={formikProps => (
               <form onSubmit={formikProps.handleSubmit}>
-                <PhoneBookForm 
+                <PhoneBookForm
                   errors={formikProps.errors}
-                  handleChange={formikProps.handleChange} 
-                  values={formikProps.values} 
+                  handleChange={formikProps.handleChange}
+                  values={formikProps.values}
                 />
               </form>
             )}
