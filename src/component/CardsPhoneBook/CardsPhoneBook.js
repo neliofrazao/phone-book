@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ReactRouterPropTypes from 'react-router-prop-types'
 import { Button, Card, CardActions, CardContent, Grid, withStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import {
@@ -13,8 +14,8 @@ import style from './CardsPhoneBook.styles'
 
 const emptySatateText = 'Não existe nenhum contato cadastrado na sua agenda'
 
-const CardsPhoneBook = ({ classes, handleDeleteContact, handleContactDetail, phones }) => {
-  const handleDetailClick = phoneId => () => handleContactDetail(phoneId)
+const CardsPhoneBook = ({ classes, handleDeleteContact, history, phones }) => {
+  const handleContactDetail = contactId => () => history.push(`contact-detail/${contactId}`)
   const handleDeleteClick = phoneId => () => handleDeleteContact(phoneId)
   const hasCardsPhoneBook = !phones.length
 
@@ -39,7 +40,7 @@ const CardsPhoneBook = ({ classes, handleDeleteContact, handleContactDetail, pho
                   <Button size="small" onClick={handleDeleteClick(phone.id)}>
                     <DeleteRounded /> Apagar
                   </Button>
-                  <Button size="small" onClick={handleDetailClick(phone.id)}>
+                  <Button size="small" onClick={handleContactDetail(phone.id)}>
                     <KeyboardArrowRightRounded /> Detalhes
                   </Button>
                 </CardActions>
@@ -54,9 +55,9 @@ const CardsPhoneBook = ({ classes, handleDeleteContact, handleContactDetail, pho
 
 CardsPhoneBook.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleContactDetail: PropTypes.func.isRequired,
   handleDeleteContact: PropTypes.func.isRequired,
-  phones: PropTypes.arrayOf(PropTypes.string).isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+  phones: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default withStyles(style)(CardsPhoneBook)

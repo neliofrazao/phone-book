@@ -68,8 +68,8 @@ class PhoneBook extends Component {
         ) : (
           <CardsPhoneBook
             handleDeleteContact={this.handleDeleteContact}
-            phones={phoneList}
             history={history}
+            phones={phoneList}
           />
         )}
       </>
