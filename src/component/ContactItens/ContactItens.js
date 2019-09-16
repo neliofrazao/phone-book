@@ -12,7 +12,7 @@ const ContactItens = ({ classes, contactContentText, contactIcon }) => (
   </Grid>
 )
 
-ContactItens.prototype = {
+ContactItens.propTypes = {
   classes: PropTypes.object.isRequired,
   contactContentText: PropTypes.string.isRequired,
   contactIcon: PropTypes.func.isRequired,

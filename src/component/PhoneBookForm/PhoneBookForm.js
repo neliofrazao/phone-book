@@ -13,8 +13,8 @@ const PhoneBookForm = ({ classes, errors, handleChange, values }) => (
           <InputField
             id="name"
             label="Nome"
-            values={values.name}
-            errors={errors.name}
+            values={values.name || ''}
+            errors={errors.name || ''}
             handleChange={handleChange}
           />
         </Grid>
@@ -22,8 +22,8 @@ const PhoneBookForm = ({ classes, errors, handleChange, values }) => (
           <InputField
             id="nickName"
             label="Apelido"
-            values={values.nickName}
-            errors={errors.nickName}
+            values={values.nickName || ''}
+            errors={errors.nickName || ''}
             handleChange={handleChange}
           />
         </Grid>
@@ -32,8 +32,8 @@ const PhoneBookForm = ({ classes, errors, handleChange, values }) => (
             id="email"
             label="Email"
             type="email"
-            values={values.email}
-            errors={errors.email}
+            values={values.email || ''}
+            errors={errors.email || ''}
             handleChange={handleChange}
           />
         </Grid>
@@ -42,8 +42,8 @@ const PhoneBookForm = ({ classes, errors, handleChange, values }) => (
             withMask
             id="phoneNumber"
             label="Telefone"
-            values={values.phoneNumber}
-            errors={errors.phoneNumber}
+            values={values.phoneNumber || ''}
+            errors={errors.phoneNumber || ''}
             handleChange={handleChange}
             inputProps={{
               options: {
@@ -64,10 +64,11 @@ const PhoneBookForm = ({ classes, errors, handleChange, values }) => (
   </>
 )
 
-PhoneBookForm.prototype = {
+PhoneBookForm.propTypes = {
   classes: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
-  values: PropTypes.func.isRequired,
+  values: PropTypes.object.isRequired,
 }
 
 export default withStyles(style)(PhoneBookForm)

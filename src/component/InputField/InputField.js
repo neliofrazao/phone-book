@@ -16,7 +16,7 @@ const Input = ({ errors, handleChange, label, id, values, ...rest }) => (
     id={id}
     label={label}
     name={id}
-    value={values || ''}
+    value={values}
     error={Boolean(errors)}
     helperText={errors}
     onChange={handleChange}
@@ -24,13 +24,12 @@ const Input = ({ errors, handleChange, label, id, values, ...rest }) => (
   />
 )
 
-Input.prototype = {
-  errors: PropTypes.func.isRequired,
+Input.propTypes = {
+  errors: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
-  InputProps: PropTypes.object,
   label: PropTypes.string.isRequired,
-  values: PropTypes.func.isRequired,
+  values: PropTypes.string.isRequired,
 }
 
 const InputField = ({ startAdornment, InputProps, withMask, ...rest }) => (
@@ -56,7 +55,9 @@ const InputField = ({ startAdornment, InputProps, withMask, ...rest }) => (
 )
 
 InputField.propTypes = {
+  handleChange: PropTypes.func.isRequired,
   InputProps: PropTypes.object,
+  label: PropTypes.string.isRequired,
   startAdornment: PropTypes.element,
   withMask: PropTypes.bool,
 }

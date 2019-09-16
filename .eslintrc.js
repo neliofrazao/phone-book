@@ -15,10 +15,7 @@ module.exports = {
     SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2018,
+    ecmaVersion: 9,
     sourceType: 'module',
   },
   plugins: [
@@ -35,13 +32,13 @@ module.exports = {
     semi: ['error', 'never'],
 
     'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
+    'react/jsx-props-no-spreading': 'off',
     'react/no-direct-mutation-state': 'error',
     'react/sort-prop-types': 'error',
     'react/forbid-prop-types': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react/no-direct-mutation-state': 'error',
     'react/sort-prop-types': 'error',
-
     'max-len': [
       'error',
       100,
