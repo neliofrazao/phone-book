@@ -52,10 +52,10 @@ const CardsPhoneBook = ({ classes, handleDeleteContact, handleContactDetail, pho
   )
 }
 
-CardsPhoneBook.prototype = {
+CardsPhoneBook.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleDeleteContact: PropTypes.func.isRequired,
   handleContactDetail: PropTypes.func.isRequired,
+  handleDeleteContact: PropTypes.func.isRequired,
   phones: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
