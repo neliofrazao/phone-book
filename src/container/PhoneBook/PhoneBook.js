@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactRouterPropTypes from 'react-router-prop-types'
 import { Button } from '@material-ui/core'
 import AppHeader from '../../component/AppHeader/AppHeader'
 import CardsPhoneBook from '../../component/CardsPhoneBook'
@@ -16,23 +17,24 @@ class PhoneBook extends Component {
     }
   }
 
+  componentDidMount() {
+    this.getPhoneBooklist()
+  }
+
   getPhoneBooklist = async () => {
     this.setState({ isLoading: true })
     try {
       const phoneListData = await phoneBook.getPhoneBookList()
       this.setState({ phoneList: phoneListData })
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error)
     }
     this.setState({ isLoading: false })
   }
 
-  handleContactDetail = contactId => {
-    this.props.history.push(`contact-detail/${contactId}`)
-  }
-
-  handleNewContact = () => {
-    this.props.history.push(`new-contact`)
+  handleNewContact = history => {
+    history.push(`new-contact`)
   }
 
   handleDeleteContact = async contactId => {
@@ -40,35 +42,43 @@ class PhoneBook extends Component {
       await phoneBook.deleteContact(contactId)
       this.getPhoneBooklist()
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error)
       this.setState({ isLoading: false })
     }
   }
 
-  componentDidMount() {
-    this.getPhoneBooklist()
-  }
-
   render() {
+    const { isLoading, phoneList } = this.state
+    const { history } = this.props
+
     return (
       <>
         <AppHeader pageTitle={PAGE_TITLE}>
-          <Button variant="contained" color="primary" onClick={this.handleNewContact}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => this.handleNewContact(history)}
+          >
             Novo Contato
           </Button>
         </AppHeader>
-        {this.state.isLoading ? (
+        {isLoading ? (
           <Loading />
         ) : (
           <CardsPhoneBook
-            phones={this.state.phoneList}
-            handleContactDetail={this.handleContactDetail}
             handleDeleteContact={this.handleDeleteContact}
+            phones={phoneList}
+            history={history}
           />
         )}
       </>
     )
   }
+}
+
+PhoneBook.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
 }
 
 export default PhoneBook
