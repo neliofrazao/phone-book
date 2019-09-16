@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { Button } from '@material-ui/core'
 import * as Yup from 'yup'
-import AppHeader from '../../component/AppHeader/AppHeader';
+import AppHeader from '../../component/AppHeader/AppHeader'
 import PhoneBookForm from '../../component/PhoneBookForm'
 import Notification from '../../component/Notification'
 import Loading from '../../component/Loading'
-import phoneBook from  '../../api/PhoneBook/PhoneBook'
+import phoneBook from '../../api/PhoneBook/PhoneBook'
 import { windowTitle } from '../../util/constants/constants'
 
 const PAGE_TITLE = 'New Contact'
@@ -14,18 +14,20 @@ const WINDOW_TITLE = `${PAGE_TITLE} ${windowTitle.TITLE}`
 const REQUIRED_MESSAGE = 'Campo obrigatório'
 
 const schema = Yup.object().shape({
+  email: Yup.string()
+    .email('Digite um email válido')
+    .required(REQUIRED_MESSAGE),
   name: Yup.string().required(REQUIRED_MESSAGE),
   nickName: Yup.string().required(REQUIRED_MESSAGE),
-  email: Yup.string().email('Digite um email válido').required(REQUIRED_MESSAGE),
-  phoneNumber: Yup.string().required(REQUIRED_MESSAGE)
+  phoneNumber: Yup.string().required(REQUIRED_MESSAGE),
 })
 
 class ContactDetail extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       isLoading: false,
-      notificationOpen: false
+      notificationOpen: false,
     }
   }
 
@@ -49,8 +51,8 @@ class ContactDetail extends Component {
   render() {
     return (
       <>
-        <AppHeader pageTitle={PAGE_TITLE} windowTitle={WINDOW_TITLE} >
-          <Button variant="contained" color="primary" onClick={this.handleHistoryBack} >
+        <AppHeader pageTitle={PAGE_TITLE} windowTitle={WINDOW_TITLE}>
+          <Button variant="contained" color="primary" onClick={this.handleHistoryBack}>
             Agenda Telefônica
           </Button>
         </AppHeader>

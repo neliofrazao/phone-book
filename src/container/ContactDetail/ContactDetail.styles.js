@@ -1,5 +1,5 @@
 export default theme => ({
   root: {
-    padding: theme.spacing(2) ,
-  }
+    padding: theme.spacing(2),
+  },
 })

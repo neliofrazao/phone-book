@@ -3,6 +3,6 @@ export default theme => ({
     margin: [[theme.spacing(4), '0']],
   },
   textRight: {
-    textAlign: 'right' 
-  }
+    textAlign: 'right',
+  },
 })

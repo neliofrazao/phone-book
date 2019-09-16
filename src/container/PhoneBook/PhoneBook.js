@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { Button } from '@material-ui/core'
-import AppHeader from '../../component/AppHeader/AppHeader';
+import AppHeader from '../../component/AppHeader/AppHeader'
 import CardsPhoneBook from '../../component/CardsPhoneBook'
 import Loading from '../../component/Loading'
-import phoneBook from  '../../api/PhoneBook/PhoneBook'
+import phoneBook from '../../api/PhoneBook/PhoneBook'
 
 const PAGE_TITLE = 'Phone Book'
 
 class PhoneBook extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       isLoading: false,
-      phoneList : [],
+      phoneList: [],
     }
   }
 
@@ -21,7 +21,7 @@ class PhoneBook extends Component {
     try {
       const phoneListData = await phoneBook.getPhoneBookList()
       this.setState({ phoneList: phoneListData })
-    } catch(error) {
+    } catch (error) {
       console.log(error)
     }
     this.setState({ isLoading: false })
@@ -39,9 +39,9 @@ class PhoneBook extends Component {
     try {
       await phoneBook.deleteContact(contactId)
       this.getPhoneBooklist()
-    } catch(error){
+    } catch (error) {
       console.log(error)
-      this.setState({ isLoading:false })
+      this.setState({ isLoading: false })
     }
   }
 
@@ -50,9 +50,9 @@ class PhoneBook extends Component {
   }
 
   render() {
-    return(
+    return (
       <>
-        <AppHeader pageTitle={PAGE_TITLE} >
+        <AppHeader pageTitle={PAGE_TITLE}>
           <Button variant="contained" color="primary" onClick={this.handleNewContact}>
             Novo Contato
           </Button>

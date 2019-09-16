@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core'
 
 const EmptySatate = ({ emptySatateText }) => (
   <Paper className="phone-detail">
@@ -13,7 +13,7 @@ const EmptySatate = ({ emptySatateText }) => (
 )
 
 EmptySatate.prototype = {
-  emptySatateText: PropTypes.string.isRequired
+  emptySatateText: PropTypes.string.isRequired,
 }
 
 export default EmptySatate

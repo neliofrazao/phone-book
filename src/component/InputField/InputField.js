@@ -30,7 +30,7 @@ Input.prototype = {
   id: PropTypes.string.isRequired,
   InputProps: PropTypes.object,
   label: PropTypes.string.isRequired,
-  values: PropTypes.func.isRequired
+  values: PropTypes.func.isRequired,
 }
 
 const InputField = ({ startAdornment, InputProps, withMask, ...rest }) => (

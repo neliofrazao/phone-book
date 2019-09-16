@@ -12,10 +12,7 @@ const Notification = ({ handleOpen, handleClose, NotificationText }) => (
     autoHideDuration={6000}
     onClose={handleClose}
   >
-    <SnackbarContent
-      onClose={handleClose}
-      message={NotificationText}
-    />
+    <SnackbarContent onClose={handleClose} message={NotificationText} />
   </Snackbar>
 )
 

@@ -5,9 +5,7 @@ import style from './ContactItens.style'
 
 const ContactItens = ({ classes, contactContentText, contactIcon }) => (
   <Grid item xs={12} className={classes.root}>
-    <Avatar className={classes.avatar}>
-      {contactIcon}
-    </Avatar>
+    <Avatar className={classes.avatar}>{contactIcon}</Avatar>
     <Typography variant="body1" gutterBottom>
       {contactContentText}
     </Typography>

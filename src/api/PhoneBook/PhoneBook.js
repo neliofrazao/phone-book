@@ -13,7 +13,7 @@ const getContactInfo = async contactId => {
 }
 
 const createNewContact = async payload => await axios.post(`phoneBook`, payload)
-const deleteContact  = async contactId => await axios.delete(`phoneBook/${contactId}`)
+const deleteContact = async contactId => await axios.delete(`phoneBook/${contactId}`)
 
 export default {
   getPhoneBookList,

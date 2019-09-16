@@ -5,42 +5,41 @@ import {
   Edit,
   KeyboardArrowLeftRounded,
   PersonPinCircle,
-  PhoneAndroidRounded
+  PhoneAndroidRounded,
 } from '@material-ui/icons'
-import AppHeader from '../../component/AppHeader/AppHeader';
+import AppHeader from '../../component/AppHeader/AppHeader'
 import ContactItens from '../../component/ContactItens'
 import Loading from '../../component/Loading'
-import phoneBook from  '../../api/PhoneBook/PhoneBook'
+import phoneBook from '../../api/PhoneBook/PhoneBook'
 import ActionBar from '../../component/ActionBar'
 import { windowTitle } from '../../util/constants/constants'
 import styles from './ContactDetail.styles'
 
 class ContactDetail extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       isLoading: true,
-      contactDetail : [],
+      contactDetail: [],
     }
   }
 
   getContactDetail = async () => {
     try {
-      const contactId = this.props.match.params.contactId
+      const { contactId } = this.props.match.params
       const getContactInfo = await phoneBook.getContactInfo(contactId)
       this.setState({ contactDetail: getContactInfo })
-    }
-    catch(error) {
+    } catch (error) {
       console.log(error)
     }
-    this.setState({ isLoading: false})
+    this.setState({ isLoading: false })
   }
 
   handleNewContact = () => this.props.history.push('/new-contact')
+
   handleHistoryBack = () => this.props.history.push('/')
 
-  handleEditContact = contactId => () =>
-    this.props.history.push(`/edit-contact/${contactId}`)
+  handleEditContact = contactId => () => this.props.history.push(`/edit-contact/${contactId}`)
 
   componentDidMount() {
     this.getContactDetail()
@@ -51,20 +50,20 @@ class ContactDetail extends Component {
     const emailIcon = <EmailRounded />
     const phoneNumberIcon = <PhoneAndroidRounded />
     const { id, name, nickName, email, phoneNumber } = this.state.contactDetail
-    
-    return(
+
+    return (
       <>
         {this.state.isLoading ? (
           <Loading />
         ) : (
           <>
-            <AppHeader pageTitle={name} windowTitle={`${name} ${windowTitle.TITLE}`} >
-              <Button  variant="contained" color="primary" onClick={this.handleNewContact} >
+            <AppHeader pageTitle={name} windowTitle={`${name} ${windowTitle.TITLE}`}>
+              <Button variant="contained" color="primary" onClick={this.handleNewContact}>
                 Novo Contato
               </Button>
             </AppHeader>
             <Paper className={this.props.classes.root}>
-              <ContactItens contactIcon={nameIcon} contactContentText={`${name} (${nickName})`}/>
+              <ContactItens contactIcon={nameIcon} contactContentText={`${name} (${nickName})`} />
               <ContactItens contactIcon={emailIcon} contactContentText={email} />
               <ContactItens contactIcon={phoneNumberIcon} contactContentText={phoneNumber} />
             </Paper>

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, withStyles } from '@material-ui/core';
-import styles from './MainTemplate.styles';
+import { Grid, withStyles } from '@material-ui/core'
+import styles from './MainTemplate.styles'
 
 const MainTemplate = ({ classes, component: Component, ...rest }) => (
   <main className={classes.root}>
