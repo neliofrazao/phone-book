@@ -25,7 +25,20 @@
     "apiserver": "json-server --watch --port 4000 server/db.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src --cache --report-unused-disable-directives && echo \"eslint: no lint errors\"",
+    "lint:fix": "eslint src --cache --fix && echo \"eslint: no lint errors\""
+  },
+  "lint-staged": {
+    "ignore": [
+      "**/dist/**/*.js"
+    ],
+    "linters": {
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ]
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
